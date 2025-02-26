@@ -9,7 +9,7 @@ const allPosts = await getCollection("blog");
   <ul>
     {
       allPosts.map((post) => (
-        <li>
+        <li key={post.slug}>
           <a href={"/TBG/blog/" + post.slug}>{post.data.title}</a>
         </li>
       ))
