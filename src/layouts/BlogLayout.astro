@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import Layout from "./Layout.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={post.data.title}>
+  <div class="py-8 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <h2>{post.data.title}</h2>
+      <img
+        src={post.data.image}
+        alt={post.slug}
+        class="border border-amber-600"
+        width="200"
+        height="200"
+      />
+      <span class="flex text-3xl">{post.data.title}</span>
+      <span
+        >Published: {
+          new Date(post.data.pubDate).toLocaleDateString("en-US")
+        }</span
+      >
+      <div class="mt-10">
+        <slot />
+      </div>
+    </div>
+  </div>
+</Layout>
