@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -15,4 +16,37 @@
     --breakpoint-xl: 1280px;
     --breakpoint-2xl: 1536px;
 
+    /* Font Family */
+    --font-family-bodoni: "Bodoni Moda", serif;
+    --font-family-raleway: "Raleway", sans-serif;
+    --font-family-nunito: "Nunito", sans-serif;
+
 }
+
+/* Font Sizing & Styling */
+h1{
+    font-family: "Bodoni Moda", serif;
+    font-size: clamp(32px, 1.8182vw + 24px, 56px);
+    letter-spacing: 1px;
+}
+h2{
+    font-family: "Bodoni Moda", serif;
+    font-size: clamp(28px, 1.3636vw + 21.09px, 44px);
+    letter-spacing: 1px;
+}
+h3{
+    font-family: "Bodoni Moda", serif;
+    font-size: clamp(22px, 0.9091vw + 16.59px, 36px);
+    letter-spacing: 1px;
+}
+
+.subheading {
+    font-family: "Raleway", sans-serif;
+    font-size: clamp(18px, 0.7273vw + 13.64px, 28px);
+  }
+
+p{
+    font-family: "Nunito", sans-serif;
+    font-size: clamp(16px, 0.5455vw + 12.18px, 22px);
+}
+
