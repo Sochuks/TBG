@@ -1,0 +1,64 @@
+---
+import heroImage from "../assets/images/232175.jpg";
+import HeroCard from "../components/HeroCard.astro";
+---
+
+<section>
+  <!-- header-container -->
+  <div class="container max-w-screen-xl mx-auto px-2">
+    <!-- Flexbox-conatiner -->
+    <div class="flex flex-col md:flex-row items-center gap-6">
+      <!-- Column-one -->
+      <div class="relative w-full md:w-2/3 md:h-[550px] overflow-hidden">
+        <!-- Background image -->
+        <img
+          src={heroImage.src}
+          alt="Catchy Background"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+
+        <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+
+        <!-- Text and Button on Overlay -->
+        <div
+          class="relative z-10 flex flex-col items-center justify-center h-full p-6 text-white text-center md:text-left"
+        >
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">
+            Welcome to My Blog
+          </h1>
+          <p class="text-lg mb-6">
+            Discover the latest insights, tutorials, and more
+          </p>
+          <a
+            href="#content"
+            class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-4 rounded-lg shadow-lg"
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column (Placeholder for now) -->
+      <div class="w-full md:w-1/3 bg-white flex p-4 gap-4 md:flex-col">
+        <HeroCard
+          imageUrl="https://img.freepik.com/free-photo/low-angle-smiley-friends-holding-iced-coffee_23-2149910920.jpg?t=st=1730973159~exp=1730976759~hmac=461cef8dc41127b33554f6a9eb75133b635a1765aab26356b9f1afa7c1b39605&w=826"
+          category="EVENTS"
+          date="25"
+          month="May"
+          title="Dr. Abdullah Abdullah's Presidential Election Campaign"
+          link="#"
+        />
+        <HeroCard
+          imageUrl="https://img.freepik.com/premium-photo/nighttime-cafe-broadway_1174561-23.jpg?w=900"
+          category="EVENTS"
+          date="25"
+          month="May"
+          title="Dr. Abdullah Abdullah's Presidential Election Campaign"
+          link="#"
+        />
+      </div>
+      <!-- End of columns -->
+    </div>
+  </div>
+</section>
