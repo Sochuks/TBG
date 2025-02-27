@@ -1,7 +1,9 @@
-import React,{createContext, useState, useEffect} from "react";
+import React,{createContext, useState, useEffect, useContext} from "react";
+
+const ProductContext = createContext();
 
 // create context
-const ProductContext = ({children})=>{
+export const ProductProvider = ({children})=>{
 
     // product state
     const [products, setProducts] = useState([]);
@@ -12,6 +14,7 @@ const ProductContext = ({children})=>{
             try {
                 const response = await fetch(`${Astro.url.origin}/api/products.json`);
                 const products = response.json();
+                setProducts(products)
             } catch (error) {
                 console.error("Error Fetching productContext", error);
             }finally{
@@ -27,4 +30,4 @@ const ProductContext = ({children})=>{
     </ProductContext.Provider>
 }
 
-export default ProductProvider;
+export const useProduct = () => useContext(ProductContext);

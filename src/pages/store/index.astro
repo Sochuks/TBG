@@ -1,0 +1,30 @@
+---
+import ProductCard from "../../components/ProductCard";
+import Layout from "../../layouts/Layout.astro";
+
+// get products
+const response = await fetch(`${Astro.url.origin}/api/products.json`);
+const { products } = await response.json();
+
+// check products
+if (!products) {
+  console.log("Products not found");
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
+---
+
+<Layout title="Store - That Black Girl">
+  <section class="max-w-screen-xl mx-auto px-2 py-20">
+    <!-- container -->
+    <div class="grid gap-4 md:grid-col-2 md:gap-6 xl:grid-cols-3">
+      {
+        products
+          .slice(3)
+          .map((product: any) => <ProductCard product={product} />)
+      }
+    </div>
+  </section>
+</Layout>
