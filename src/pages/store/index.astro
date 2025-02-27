@@ -23,7 +23,7 @@ if (!products) {
       {
         products
           .slice(3)
-          .map((product: any) => <ProductCard product={product} />)
+          .map((product: any) => <ProductCard product={product} client:load />)
       }
     </div>
   </section>

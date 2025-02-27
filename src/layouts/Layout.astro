@@ -25,7 +25,7 @@ const { title } = Astro.props;
     <Header />
     <slot />
     <Footer />
-    <CartSidebar />
+    <CartSidebar client:load />
   </body>
 </html>
 
@@ -37,3 +37,6 @@ const { title } = Astro.props;
     height: 100%;
   }
 </style>
+<script>
+  console.log("Page loaded");
+</script>
