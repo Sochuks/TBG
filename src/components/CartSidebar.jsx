@@ -1,11 +1,14 @@
 
+
+
 const CartSidebar=({})=>{
+
     return(
-        <div class={`fixed inset-y-0 right-0 w-96 bg-white shadow-lg`}>
+        <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-96 bg-white shadow-lg translate-x-full transition-transform duration-300">
             {/* SideBar Header here */}
             <div className='flex items-center justify-between py-6 border-b'>
                 <div className='text-sm font-semibold'>Shopping Bag</div>
-                <button class="p-2 hover:bg-gray-100 rounded-full">
+                <button id="close-sidebar" className="p-2 hover:bg-gray-100 rounded-full">
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6"
@@ -25,6 +28,8 @@ const CartSidebar=({})=>{
             </div>
             {/* SideBar Body */}
             <p>stew</p>
+
+
         </div>
     )
 };

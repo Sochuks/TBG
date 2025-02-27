@@ -78,7 +78,7 @@
         </div>
 
         <div class="relative">
-          <button class="p-2 hover:bg-gray-100 rounded-full">
+          <button id="cart-button" class="p-2 hover:bg-gray-100 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"
@@ -124,3 +124,19 @@
     </div>
   </div>
 </header>
+
+<script>
+  const cartButton = document.getElementById("cart-button");
+  const cartSidebar = document.getElementById("cart-sidebar");
+  const closeSidebar = document.getElementById("close-sidebar");
+
+  cartButton?.addEventListener("click", () => {
+    cartSidebar?.classList.toggle("translate-x-0");
+    cartSidebar?.classList.toggle("translate-x-full");
+  });
+
+  closeSidebar?.addEventListener("click", () => {
+    cartSidebar?.classList.add("translate-x-full");
+    cartSidebar?.classList.remove("translate-x-0");
+  });
+</script>

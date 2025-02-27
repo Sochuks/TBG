@@ -4,7 +4,6 @@ import "../styles/global.css";
 import Footer from "../layouts/Footer.astro";
 import Header from "../layouts/Header.astro";
 import CartSidebar from "../components/CartSidebar";
-import { ProductProvider } from "../context/ProductContext.jsx";
 
 interface Props {
   title: string;
@@ -23,12 +22,10 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <ProductProvider>
-      <Header />
-      <slot />
-      <Footer />
-      <CartSidebar />
-    </ProductProvider>
+    <Header />
+    <slot />
+    <Footer />
+    <CartSidebar />
   </body>
 </html>
 
