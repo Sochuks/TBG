@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import ProductCard from "../components/ProductCard";
+import HomeProduct from "../components/HomeProduct";
 
 // get products
 const response = await fetch(`${Astro.url.origin}/api/products.json`);
@@ -25,7 +25,7 @@ if (!products) {
       {
         products
           .slice(3)
-          .map((product: any) => <ProductCard product={product} />)
+          .map((product: any) => <HomeProduct product={product} client:load />)
       }
     </div>
   </section>

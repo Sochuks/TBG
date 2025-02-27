@@ -21,9 +21,9 @@ if (!products) {
     <!-- container -->
     <div class="grid gap-4 md:grid-col-2 md:gap-6 xl:grid-cols-3">
       {
-        products
-          .slice(3)
-          .map((product: any) => <ProductCard product={product} client:load />)
+        products.map((product: any) => (
+          <ProductCard product={product} client:load />
+        ))
       }
     </div>
   </section>
