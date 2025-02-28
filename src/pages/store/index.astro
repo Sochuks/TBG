@@ -2,8 +2,10 @@
 import ProductCard from "../../components/ProductCard";
 import Layout from "../../layouts/Layout.astro";
 
+const API_URL = import.meta.env.PUBLIC_API_URL || Astro.url.origin;
+
 // get products
-const response = await fetch(`${Astro.url.origin}/api/products.json`);
+const response = await fetch(`${API_URL}/api/products.json`);
 const { products } = await response.json();
 
 // check products
