@@ -2,10 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import HomeProduct from "../components/HomeProduct";
+import { store } from "../utils/db";
 
 // get products
-const response = await fetch(`${Astro.url.origin}/api/products.json`);
-const { products } = await response.json();
+// const response = await fetch(`${Astro.url.origin}/api/products.json`);
+// const { products } = await response.json();
+const products = store;
 
 // check products
 if (!products) {
