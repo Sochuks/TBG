@@ -1,9 +1,10 @@
 ---
 import heroImage from "../assets/images/232175.jpg";
 import HeroCard from "../components/HeroCard.astro";
+import animatedLogo from "../assets/images/animated-hero.svg"; // Removed ?raw, assuming it's a file
 ---
 
-<section class="relative overflow-hidden h-[60-vh]">
+<section class="relative overflow-hidden h-[80vh]">
   <!-- Background image -->
   <img
     src={heroImage.src}
@@ -13,6 +14,69 @@ import HeroCard from "../components/HeroCard.astro";
 
   <!-- Dark overlay -->
   <div class="absolute inset-0 bg-black opacity-60"></div>
+
   <!-- header-container -->
-  <div class="container max-w-screen-xl mx-auto px-2"></div>
+  <div class="container max-w-screen-xl mx-auto px-2 relative z-10 pt-16">
+    <!-- Grid Container -->
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 items-center">
+      <!-- Left Column (Content) -->
+      <div class="rounded-lg bg-gray-200/50 lg:col-span-2 p-6">
+        <h1 class="text-3xl font-extrabold sm:text-5xl text-white">
+          Let us find your
+          <strong class="block font-extrabold text-rose-700">
+            Forever Home.
+          </strong>
+        </h1>
+
+        <p class="mt-4 max-w-lg sm:text-xl/relaxed text-white">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
+          illo tenetur fuga ducimus numquam ea!
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4 text-center">
+          <a
+            href="#"
+            class="block w-full rounded-sm bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow-sm hover:bg-rose-700 focus:ring-3 focus:outline-none sm:w-auto"
+          >
+            Get Started
+          </a>
+
+          <a
+            href="#"
+            class="block w-full rounded-sm bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow-sm hover:text-rose-700 focus:ring-3 focus:outline-none sm:w-auto"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column (SVG) -->
+      <div
+        class="h-32 rounded-lg bg-transparent flex items-center justify-center"
+      >
+        <img
+          src={animatedLogo.src}
+          alt="Animated Logo"
+          class="w-full h-full object-contain draw-path"
+        />
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  .draw-path {
+    stroke: url(#brandGradient);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 4s linear forwards;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

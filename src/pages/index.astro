@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import HomeProduct from "../components/HomeProduct";
 import { store } from "../utils/db";
+import AnimatedLogo from "../assets/images/animated-hero.svg?raw";
 
 // get products
 // const response = await fetch(`${Astro.url.origin}/api/products.json`);
@@ -38,6 +39,11 @@ if (!products) {
   </section> -->
 
   <section class="max-w-screen-xl mx-auto px-2 py-20">
+    <!-- Heading -->
+    <div class={`flex flex-col items-start mb-10`}>
+      <h2 class="text-2xl font-bold text-gray-800">Top Trends</h2>
+      <div class="w-28 h-1 bg-rose-600 my-4"></div>
+    </div>
     <!-- container -->
     <div class="grid gap-4 md:grid-col-2 md:gap-6 xl:grid-cols-3">
       {
