@@ -6,6 +6,8 @@ import { store } from "../utils/db";
 import AnimatedLogo from "../assets/images/animated-hero.svg?raw";
 import FeaturedPost from "../components/FeaturedPost.astro";
 import SamplePost from "../components/SamplePost.astro";
+import SpotCard from "../components/SpotCard.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 
 // get products
 // const response = await fetch(`${Astro.url.origin}/api/products.json`);
@@ -25,9 +27,8 @@ if (!products) {
 <Layout title="Home - That Black Girl Blog">
   <Hero />
 
-  <section class="max-w-screen-xl mx-auto py-20 relative mb-24">
+  <section class="max-w-screen-xl mx-auto py-20 relative">
     <!-- Heading -->
-
     <div
       class="border-b border-b-golden-glow mb-5 flex justify-between text-sm"
     >
@@ -49,6 +50,117 @@ if (!products) {
         <SamplePost />
         <SamplePost />
         <SamplePost />
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Spots -->
+  <section class="max-w-screen-xl mx-auto py-20 relative">
+    <!-- Heading -->
+    <div
+      class="border-b border-b-golden-glow mb-5 flex justify-between text-sm"
+    >
+      <div
+        class="text-midnight-blue flex items-center pb-2 pr-2 border-b-4 border-sunset-orange uppercase"
+      >
+        <h3 class="font-semibold inline-block">Hot Spots</h3>
+      </div>
+      <a href="#">See All</a>
+    </div>
+    <!-- Grid container -->
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
+      <div class="h-full rounded-lg bg-gray-200 space-y-10">
+        <SpotCard />
+        <SpotCard />
+      </div>
+
+      <div class="h-full rounded-lg bg-gray-200 lg:col-span-2">
+        <div class="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
+          <a href="#">
+            <img
+              class="w-full"
+              src="https://images.pexels.com/photos/5120892/pexels-photo-5120892.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=625.0&sharp=10&w=1000"
+              alt="Sunset in the mountains"
+            />
+          </a>
+          <div class="relative -mt-16 px-10 pt-5 pb-16 bg-white m-10">
+            <a
+              href="#"
+              class="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2"
+              >The Best Activewear from the Nordstrom Anniversary Sale</a
+            >
+            <p class="text-gray-500 text-sm">
+              Today, I’m covering one of my favorite parts of the Nordstrom
+              Anniversary Sale: the activewear!
+            </p>
+            <p class="mt-5 text-gray-600 text-xs">
+              By
+              <a
+                href="#"
+                class="text-xs text-indigo-600 transition duration-500 ease-in-out"
+              >
+                Mehdi Ahmadi
+              </a> | in <a
+                href="#"
+                class="text-xs text-indigo-600 transition duration-500 ease-in-out"
+              >
+                Cooking
+              </a>, <a
+                href="#"
+                class="text-xs text-indigo-600 transition duration-500 ease-in-out"
+              >
+                Recipe
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="h-full rounded-lg bg-gray-200 space-y-10">
+        <SpotCard />
+        <SpotCard />
+      </div>
+    </div>
+  </section>
+
+  <!-- Store -->
+  <section class="max-w-screen-xl mx-auto py-20 relative space-y-8">
+    <SectionTitle title="Glam Store" />
+
+    <!-- Grid Container -->
+    <div class="grid gap-4 md:grid-col-2 md:gap-6 xl:grid-cols-3">
+      {
+        products
+          .slice(3)
+          .map((product: any) => <HomeProduct product={product} client:load />)
+      }
+    </div>
+
+    <div
+      class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=2670&auto=format&fit=crop)] bg-cover bg-top bg-no-repeat my-40"
+    >
+      <div class="bg-black/50 p-8 md:p-12 lg:px-16 lg:py-24">
+        <div class="text-center ltr:sm:text-left rtl:sm:text-right">
+          <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl">
+            Latest Shirts
+          </h2>
+
+          <p
+            class="hidden max-w-lg text-white/90 md:mt-6 md:block md:text-lg md:leading-relaxed"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore
+            officia corporis quasi doloribus iure architecto quae voluptatum
+            beatae excepturi dolores.
+          </p>
+
+          <div class="mt-4 sm:mt-8">
+            <a
+              href="#"
+              class="inline-block rounded-full bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:ring-3 focus:ring-yellow-400 focus:outline-hidden"
+            >
+              Get Yours Today
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!-- Heading -->
+<div class="border-b border-b-golden-glow mb-5 flex justify-between text-sm">
+  <div
+    class="text-midnight-blue flex items-center pb-2 pr-2 border-b-4 border-sunset-orange uppercase"
+  >
+    <h3 class="font-semibold inline-block">{title}</h3>
+  </div>
+  <a href="#">See All</a>
+</div>
