@@ -2,13 +2,40 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import HomeProduct from "../components/HomeProduct";
-import { store } from "../utils/db";
+import { store, places } from "../utils/db";
 import AnimatedLogo from "../assets/images/animated-hero.svg?raw";
 import FeaturedPost from "../components/FeaturedPost.astro";
 import SamplePost from "../components/SamplePost.astro";
 import SpotCard from "../components/SpotCard.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import EventCard from "../components/EventCard.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import type { CollectionKey } from "astro:content";
+
+const allPost: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const mostRecent: CollectionEntry<"blog"> = allPost[0];
+const otherBlogs: CollectionEntry<"blog">[] = allPost.slice(1);
+
+const spots = places;
+
+const featuredPlace = spots.filter((place) => place.featured);
+
+// Shuffle other places
+function shuffleArray(array: any) {
+  let shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+}
+
+const otherPlaces = shuffleArray(places.filter((place) => !place.featured));
 
 // get products
 // const response = await fetch(`${Astro.url.origin}/api/products.json`);
@@ -44,13 +71,11 @@ if (!products) {
     <!-- container -->
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-8">
       <div class="h-full">
-        <FeaturedPost />
+        <FeaturedPost post={mostRecent} />
       </div>
 
-      <div class="h-full px-4 py-4 space-y-2 bg-warm-beige">
-        <SamplePost />
-        <SamplePost />
-        <SamplePost />
+      <div class="flex flex-col items-center px-4 py-4 space-y-2 bg-warm-beige">
+        {otherBlogs.slice(0, 3).map((post) => <SamplePost post={post} />)}
       </div>
     </div>
   </section>
@@ -71,8 +96,7 @@ if (!products) {
     <!-- Grid container -->
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
       <div class="h-full rounded-lg bg-gray-200 space-y-10">
-        <SpotCard />
-        <SpotCard />
+        {otherPlaces.slice(0, 2).map((item) => <SpotCard spot={item} />)}
       </div>
 
       <div class="h-full rounded-lg bg-gray-200 lg:col-span-2">
@@ -117,8 +141,7 @@ if (!products) {
         </div>
       </div>
       <div class="h-full rounded-lg bg-gray-200 space-y-10">
-        <SpotCard />
-        <SpotCard />
+        {otherPlaces.slice(2, 4).map((item) => <SpotCard spot={item} />)}
       </div>
     </div>
   </section>

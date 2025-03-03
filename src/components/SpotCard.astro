@@ -1,5 +1,5 @@
 ---
-
+const { spot } = Astro.props;
 ---
 
 <article
@@ -26,36 +26,32 @@
         ></path>
       </svg>
     </span>
-    <span class="text-gray-500 text-xs"
-      ><a href="">Maimai street, wuse II</a></span
-    >
+    <span class="text-gray-500 text-xs"><a href="">{spot.address}</a></span>
   </div>
 
   <a href="#">
     <h4 class="text-[18px] text-gray-900 font-bold hover:text-indigo-600">
-      Trucadero Lounge
+      {spot.name}
     </h4>
   </a>
   <div class="mt-4 flex flex-wrap gap-1">
-    <span
-      class="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs whitespace-nowrap text-purple-600"
-    >
-      Food
-    </span>
-
-    <span
-      class="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs whitespace-nowrap text-purple-600"
-    >
-      Drinks
-    </span>
+    {
+      Array.isArray(spot?.tags) && spot.tags.length > 0 ? (
+        spot.tags
+          .slice(0, 3)
+          .map((tag: string) => (
+            <span class="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs whitespace-nowrap text-purple-600">
+              {tag}
+            </span>
+          ))
+      ) : (
+        <span class="text-gray-500 text-xs">No tags available</span>
+      )
+    }
   </div>
 
   <span class="mt-2 line-clamp-3 text-base text-gray-500">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-    dolores, possimus pariatur animi temporibus nesciunt praesentium dolore sed
-    nulla ipsum eveniet corporis quidem, mollitia itaque minus soluta,
-    voluptates neque explicabo tempora nisi culpa eius atque dignissimos.
-    Molestias explicabo corporis voluptatem?
+    {spot.description}
   </span>
 
   <a
