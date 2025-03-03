@@ -26,11 +26,20 @@ const { spot } = Astro.props;
         ></path>
       </svg>
     </span>
-    <span class="text-gray-500 text-xs"><a href="">{spot.address}</a></span>
+    <span class="text-gray-500 text-xs">
+      <a
+        href={`https://www.google.com/maps/search/?q=${encodeURIComponent(spot.address)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style="font-size: 14px;"
+      >
+        {spot.address}
+      </a></span
+    >
   </div>
 
   <a href="#">
-    <h4 class="text-[18px] text-gray-900 font-bold hover:text-indigo-600">
+    <h4 class="text-[18px] text-midnight-blue font-bold hover:text-indigo-600">
       {spot.name}
     </h4>
   </a>
@@ -40,7 +49,7 @@ const { spot } = Astro.props;
         spot.tags
           .slice(0, 3)
           .map((tag: string) => (
-            <span class="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs whitespace-nowrap text-purple-600">
+            <span class="rounded-full bg-deep-olive px-2.5 py-0.5 text-xs whitespace-nowrap text-white">
               {tag}
             </span>
           ))
@@ -50,13 +59,15 @@ const { spot } = Astro.props;
     }
   </div>
 
-  <span class="mt-2 line-clamp-3 text-base text-gray-500">
+  <span class="mt-2 line-clamp-2 text-base text-gray-500">
     {spot.description}
   </span>
 
   <a
-    href="#"
-    class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600"
+    href={`https://www.google.com/maps/search/?q=${encodeURIComponent(spot.address)}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-deep-olive"
   >
     Get Directions
 

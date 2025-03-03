@@ -74,7 +74,9 @@ if (!products) {
         <FeaturedPost post={mostRecent} />
       </div>
 
-      <div class="flex flex-col items-center px-4 py-4 space-y-2 bg-warm-beige">
+      <div
+        class="flex flex-col justify-center px-4 py-4 space-y-2 bg-warm-beige"
+      >
         {otherBlogs.slice(0, 3).map((post) => <SamplePost post={post} />)}
       </div>
     </div>
@@ -83,64 +85,60 @@ if (!products) {
   <!-- Top Spots -->
   <section class="max-w-screen-xl mx-auto py-20 relative">
     <!-- Heading -->
-    <div
-      class="border-b border-b-golden-glow mb-5 flex justify-between text-sm"
-    >
-      <div
-        class="text-midnight-blue flex items-center pb-2 pr-2 border-b-4 border-sunset-orange uppercase"
-      >
-        <h3 class="font-semibold inline-block">Hot Spots</h3>
-      </div>
-      <a href="#">See All</a>
-    </div>
+    <SectionTitle title="Hot Spots" />
     <!-- Grid container -->
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:gap-8">
-      <div class="h-full rounded-lg bg-gray-200 space-y-10">
+      <div class="flex flex-col justify-center space-y-8">
         {otherPlaces.slice(0, 2).map((item) => <SpotCard spot={item} />)}
       </div>
 
-      <div class="h-full rounded-lg bg-gray-200 lg:col-span-2">
-        <div class="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
-          <a href="#">
-            <img
-              class="w-full"
-              src="https://images.pexels.com/photos/5120892/pexels-photo-5120892.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=625.0&sharp=10&w=1000"
-              alt="Sunset in the mountains"
-            />
-          </a>
-          <div class="relative -mt-16 px-10 pt-5 pb-16 bg-white m-10">
-            <a
-              href="#"
-              class="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2"
-              >The Best Activewear from the Nordstrom Anniversary Sale</a
-            >
-            <p class="text-gray-500 text-sm">
-              Today, I’m covering one of my favorite parts of the Nordstrom
-              Anniversary Sale: the activewear!
-            </p>
-            <p class="mt-5 text-gray-600 text-xs">
-              By
-              <a
-                href="#"
-                class="text-xs text-indigo-600 transition duration-500 ease-in-out"
-              >
-                Mehdi Ahmadi
-              </a> | in <a
-                href="#"
-                class="text-xs text-indigo-600 transition duration-500 ease-in-out"
-              >
-                Cooking
-              </a>, <a
-                href="#"
-                class="text-xs text-indigo-600 transition duration-500 ease-in-out"
-              >
-                Recipe
+      <div class="flex flex-col justify-center bg-gray-200 lg:col-span-2">
+        {
+          featuredPlace.map((place) => (
+            <div class="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
+              <a href="#">
+                <img
+                  class="w-full"
+                  src={place.img}
+                  alt="Sunset in the mountains"
+                />
               </a>
-            </p>
-          </div>
-        </div>
+              <div class="relative -mt-16 px-10 pt-5 pb-16 bg-white m-10">
+                <h3 class="font-medium text-midnight-blue hover:text-indigo-600 transition duration-500 ease-in-out mb-2">
+                  {place.name}
+                </h3>
+                <p class="text-gray-500 text-sm line-clamp-3">
+                  {place.description}
+                </p>
+                <p class="mt-5 text-gray-600 text-xs">
+                  By
+                  <a
+                    href="#"
+                    class="text-xs text-indigo-600 transition duration-500 ease-in-out"
+                  >
+                    Mehdi Ahmadi
+                  </a>{" "}
+                  | in{" "}
+                  <a
+                    href="#"
+                    class="text-xs text-indigo-600 transition duration-500 ease-in-out"
+                  >
+                    Cooking
+                  </a>
+                  ,{" "}
+                  <a
+                    href="#"
+                    class="text-xs text-indigo-600 transition duration-500 ease-in-out"
+                  >
+                    Recipe
+                  </a>
+                </p>
+              </div>
+            </div>
+          ))
+        }
       </div>
-      <div class="h-full rounded-lg bg-gray-200 space-y-10">
+      <div class="flex flex-col justify-center space-y-8">
         {otherPlaces.slice(2, 4).map((item) => <SpotCard spot={item} />)}
       </div>
     </div>

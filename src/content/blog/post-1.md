@@ -4,7 +4,7 @@ excerpt: "The programming world is evolving, and 2024 brings exciting trends."
 pubDate: 2024-02-01
 author: "Jane Doe"
 authorImage: "female-class.png"
-image: "female-class.png"
+image: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*WolG-UJftqTXDb5ae22xjQ.jpeg"
 category: ["IT"]
 tags: ["programming", "languages", "trends"]
 slug: "top-10-programming-languages-2024"

@@ -4,7 +4,7 @@ excerpt: "Enjoy stunning views and great drinks at these rooftop bars."
 pubDate: 2024-01-25
 author: "Segun Oladele"
 authorImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-image: "https://images.unsplash.com/photo-1514933651103-17e2ec6f9638?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+image: "https://dinesurf.com/wp-content/uploads/2023/09/UhT3KSLaJYBjeMCm2XzxHaNEFB9OT780oKwQwXAX.jpg"
 category: ["Trending Spots"]
 tags: ["rooftop-bars", "Abuja", "nightlife"]
 slug: "top-rooftop-bars-abuja"

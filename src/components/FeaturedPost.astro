@@ -18,15 +18,18 @@ interface Props {
 
   <div class="p-4 mt-4">
     <div>
+      <span class="text-md text-deep-olive subtitle">{post.data.category}</span>
+    </div>
+    <a href={"/TBG/blog/" + post.slug}>
+      <h3 class="font-medium text-midnight-blue">
+        {post.data.title}
+      </h3>
+    </a>
+    <div>
       <time datetime="2022-10-10" class="block text-sm text-gray-500">
         {formatDate(post.data.pubDate)}
       </time>
     </div>
-    <a href={"/TBG/blog/" + post.slug}>
-      <h3 class="text-lg font-medium text-gray-900">
-        {post.data.title}
-      </h3>
-    </a>
 
     <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
       {post.data.excerpt}
@@ -34,11 +37,11 @@ interface Props {
 
     <div class="mt-4 flex flex-wrap gap-1">
       {
-        post.data.tags.map((item) => {
-          <span class="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs whitespace-nowrap text-purple-600">
+        post.data.tags.map((item) => (
+          <span class="rounded-full border border-sunset-orange px-2.5 py-0.5 text-xs whitespace-nowrap text-sunset-orange">
             {item}
-          </span>;
-        })
+          </span>
+        ))
       }
     </div>
   </div>
