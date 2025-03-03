@@ -1,5 +1,7 @@
 ---
+import { formatDate } from "../utils/utils";
 
+const { event } = Astro.props;
 ---
 
 <div class="rounded h-full overflow-hidden shadow-lg flex flex-col">
@@ -7,8 +9,8 @@
   <div class="relative">
     <a href="#">
       <img
-        class="w-full"
-        src="https://images.pexels.com/photos/61180/pexels-photo-61180.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+        class="h-64 w-full object-cover"
+        src={event.image}
         alt="Sunset in the mountains"
       />
       <div
@@ -28,23 +30,20 @@
     <a
       href="#"
       class="subheading text-midnight-blue font-medium hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2"
-      >Simplest Salad Recipe ever</a
+      >{event.name}</a
     >
-    <p class="text-gray-500">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    <p class="text-gray-500 line-clamp-2">
+      {event.description}
     </p>
   </div>
   <div class="px-6 py-4 flex flex-wrap gap-1">
-    <span
-      class="whitespace-nowrap rounded-full border border-purple-500 px-2.5 py-0.5 text-sm text-purple-700"
-    >
-      Live
-    </span>
-    <span
-      class="whitespace-nowrap rounded-full border border-purple-500 px-2.5 py-0.5 text-sm text-purple-700"
-    >
-      Music
-    </span>
+    {
+      event.tags.map((item: any) => (
+        <span class="rounded-full border border-sunset-orange px-2.5 py-0.5 text-xs whitespace-nowrap text-sunset-orange">
+          {item}
+        </span>
+      ))
+    }
   </div>
   <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
     <span
@@ -65,7 +64,7 @@
         ></path>
       </svg>
 
-      <span class="ml-1">24th July, 2025.</span>
+      <span class="ml-1">{formatDate(event.date)}</span>
     </span>
 
     <span
@@ -90,7 +89,7 @@
         ></path>
       </svg>
 
-      <span class="ml-1">Raison Blue, Wuse.</span>
+      <span class="ml-1">{event.location}</span>
     </span>
   </div>
 </div>
