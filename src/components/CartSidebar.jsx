@@ -7,12 +7,11 @@ const CartSidebar=({})=>{
     const toggleSidebar = useCartStore((state) => state.toggleSidebar);
     const clearCart = useCartStore((state) => state.clearCart);
     return(
-        <div className={`fixed inset-y-0 right-0 w-80 bg-white shadow-lg transform ${
-            isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-          } transition-transform duration-300 ease-in-out`}>
+        <div className={`fixed flex flex-col justify-between border-e border-gray-100 inset-y-0 right-0 h-screen w-1/3 z-30 px-4 py-6 bg-white shadow-lg transform ${
+            isSidebarOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
             {/* SideBar Header here */}
-            <div className='flex items-center justify-between py-6 border-b'>
-                <div className='text-sm font-semibold'>Shopping Bag</div>
+            <div className='flex items-center justify-between py-6 px-4 border-b'>
+                <div className='subheading font-semibold'>Shopping Bag</div>
                 <button onClick={toggleSidebar} className="p-2 hover:bg-gray-100 rounded-full">
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -30,17 +29,42 @@ const CartSidebar=({})=>{
                     </svg>
                 </button>
 
+
+
             </div>
             {/* SideBar Body */}
-            <div className="p-4">
+            <div className="">
         {cart.length === 0 ? (
-          <p className="text-gray-500">Your cart is empty.</p>
+          <p className="text-gray-500 text-xl">Your cart is empty.</p>
         ) : (
           <ul className="space-y-4">
             {cart.map((item) => (
-              <li key={item.id} className="flex justify-between">
-                <span>{item.name} (x{item.quantity})</span>
-                <span>${(item.actual_price * item.quantity).toFixed(2)}</span>
+                <li key={item.id} className="flex items-center gap-4">
+                <img
+                  src={item.imgSrc}
+                  alt=""
+                  className="size-16 rounded-sm object-cover"
+                />
+        
+                <div>
+                  <span className="text-gray-900 subtitle">{item.name} (x{item.quantity})</span>
+        
+                  <dl className="mt-0.5 space-y-px text-[10px] text-gray-600">
+                    <div>
+                      <dt className="inline">Size:</dt>
+                      <dd className="inline">{item.size}</dd>
+                    </div>
+        
+                    <div>
+                      <dt className="inline">Color:</dt>
+                      <dd className="inline">{item.color}</dd>
+                    </div>
+                  </dl>
+                </div>
+        
+                <div className="flex flex-1 items-center justify-end gap-2">
+                <p className="mt-1.5 tracking-wide text-gray-900">${(item.actual_price * item.quantity).toFixed(2)}</p>
+                </div>
               </li>
             ))}
           </ul>    
