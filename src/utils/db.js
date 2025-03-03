@@ -70,3 +70,7 @@ export const store = [
   export const listProducts = () =>{
     return store;
   }
+
+  export const places = () =>{
+    
+  }
